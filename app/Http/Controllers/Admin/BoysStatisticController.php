@@ -18,7 +18,7 @@ class BoysStatisticController extends Controller
         
 
         // Return a view
-        return view('pages.admin.boys.index')
+        return view('pages.admin.boys.index');
     }
 
     /**
