@@ -26,7 +26,10 @@ class GeneticAlgoritm
 
     private function generateIndividual()
     {
-        return [rand(1, 10), rand(1, 10), rand(1, 10), rand(1, 10)];
+
+        // dd([rand(1, 10), rand(1, 10), rand(1, 10), rand(1, 10)]);
+        // return [rand(1, 10), rand(1, 10), rand(1, 10), rand(1, 10)];
+        return [3,2,4,7];
     }
 
     private function targetFunction($individual)
@@ -70,6 +73,7 @@ class GeneticAlgoritm
             $newPopulation[] = $child;
         }
 
+        // dd($newPopulation."New Population");
         return $newPopulation;
     }
 
@@ -83,11 +87,21 @@ class GeneticAlgoritm
         for ($generation = 0; $generation < $this->generations; $generation++) {
             $fitnessScores = array_map([$this, 'fitness'], $this->population);
 
+            // dd($fitnessScores);
+
             $bestIndex = array_search(min($fitnessScores), $fitnessScores);
             $bestIndividual = $this->population[$bestIndex];
 
+            // dd($bestIndividual);
+
             $selectedParents = $this->selectParents($fitnessScores);
+
+            // dd($selectedParents);
             $this->population = $this->crossoverAndMutate($selectedParents);
+
+            // dd($this->population);
+
+            // dd($this->population);
 
             // echo "Generation " . ($generation + 1) . ": Fitness - " . $this->fitness($bestIndividual) . "\n";
             // echo "Best Individual: " . json_encode($bestIndividual) . "\n";

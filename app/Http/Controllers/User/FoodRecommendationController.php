@@ -338,7 +338,7 @@ class FoodRecommendationController extends Controller
         }
         // Harris-Benedict
         $target = new \App\Models\Algoritm\HarrisBenedict($gender, $weight, $height, $age, $activityLevel);
-        // dd($result);
+        // dd($target);
 
 
         // Harris-Benedict Equation Now
@@ -358,6 +358,8 @@ class FoodRecommendationController extends Controller
         // Harris-Benedict
         $now = new \App\Models\Algoritm\HarrisBenedict($gender, $weight, $height, $age, $activityLevel);
         // dd($target, $now);
+
+        // dd($now);
 
 
         // 1. Population
@@ -403,7 +405,9 @@ class FoodRecommendationController extends Controller
         }
 
         // Foods
-        $foods = \App\Models\Food::all();
+        $foods = \App\Models\Food::limit(10)->get();
+
+        // dd($foods);
 
         // Hitung nilai maksimum dan minimum dari setiap nutrisi
         $maxEnergy = $population->max('energy');
@@ -450,6 +454,8 @@ class FoodRecommendationController extends Controller
             'satuanCarbohydrates' => $satuanCarbohydrates,
         ];
 
+        // dd($data);
+
         // Set Target
         $resultEnergy = (($target->result['energy'] - $data['minEnergy']) / $data['satuanEnergy']);
         $resultEnergy = round($resultEnergy) > 10 ? 10 : round($resultEnergy);
@@ -461,6 +467,8 @@ class FoodRecommendationController extends Controller
         $resultCarbohydrates = round($resultCarbohydrates) > 10 ? 10 : round($resultCarbohydrates);
 
         // dd($resultEnergy, $target->result['energy'], $data['minEnergy'], $data['satuanEnergy']);
+
+        
         // GeneticAlgorithm
         // Contoh penggunaan
         $populationSize = 100;
@@ -468,6 +476,7 @@ class FoodRecommendationController extends Controller
         $mutationRate = 100; // Persentase peluang mutasi
         $target = $resultEnergy + $resultProtein + $resultFat + $resultCarbohydrates; // Target
 
+        // dd($target); // 24
         // Loop 5 Kali untuk Rekomendasi Makanan pada 1 Hari
         $recommendations = [];
         for ($f = 0; $f < 2; $f++) {
@@ -540,6 +549,8 @@ class FoodRecommendationController extends Controller
             $recommendations[] = $recommendationFoods;
         }
 
+        // dd($recommendations);
+
 
 
         // dd($recommendations);
@@ -561,6 +572,8 @@ class FoodRecommendationController extends Controller
                 $note = 'Makan Malam';
             }
 
+
+            // dd($index);
             foreach ($recommendation as $food) {
                 // dd($food);
                 // Save to Database

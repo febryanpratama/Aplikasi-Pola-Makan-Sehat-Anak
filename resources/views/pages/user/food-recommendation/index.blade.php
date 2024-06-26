@@ -7,14 +7,14 @@
 
      <div class="py-12">
           <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center">
-               <a href="{{ route('user.food_recommendation.create', $children->slug) }}" class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800">
+               {{-- <a href="{{ route('user.food_recommendation.create', $children->slug) }}" class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800">
                <span class="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 me-3">Baru</span> <span class="text-sm font-medium">Tambah Kelompok Makanan baru</span> 
                <svg class="w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                </svg>
-               </a>
+               </a> --}}
                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Daftar Kelompok Makanan</h1>
-               <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Berikut ini merupakan Pengelompokan Makanan.</p>
+               <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">Berikut ini merupakan Rekomendasi Pengelompokan Makanan untuk anak {{ $children->name }}.</p>
           </div>
      </div>
 
@@ -38,6 +38,8 @@
                               <tbody>
                                    @isset($foodRecommendations)
                                         @foreach ($foodRecommendations as $index => $item)
+
+                                        {{-- {{ dd($item->food) }} --}}
                                              <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                        {{ $item->food->name }}
@@ -45,23 +47,35 @@
                                                   <td class="px-6 py-4">
                                                        <div class="flex col-2 gap-2">
                                                             <div>
-                                                                 <span>Time : </span>
+                                                                 <span>Protein : </span>
                                                             </div>
                                                             <div>
-                                                                 <span>{{ $item->time }}</span>
+                                                                 <span>{{ $item->food->protein }}</span>
+                                                            </div>
+                                                            <div>
+                                                                 <span>Carbohydrates : </span>
+                                                            </div>
+                                                            <div>
+                                                                 <span>{{ $item->food->carbohydrates }}</span>
                                                             </div>
                                                        </div>
 
                                                        <div class="flex col-2 gap-2">
                                                             <div>
-                                                                 <span>Tanggal Lahir : </span>
+                                                                 <span>Energy : </span>
                                                             </div>
                                                             <div>
-                                                                 <span>{{ $item->birthdate }}</span>
+                                                                 <span>{{ $item->food->energy }}</span>
+                                                            </div>
+                                                            <div>
+                                                                 <span>Calcium : </span>
+                                                            </div>
+                                                            <div>
+                                                                 <span>{{ $item->food->calcium }}</span>
                                                             </div>
                                                        </div>
                                                   </td>
-                                                  <td class="px-6 py-4 flex gap-4 justify-end">
+                                                  {{-- <td class="px-6 py-4 flex gap-4 justify-end">
                                                        <button data-modal-target="popup-modal-{{ $index }}" data-modal-toggle="popup-modal-{{ $index }}" class="inline-flex items-center px-4 py-2 bg-red-800 dark:bg-red-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-red-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-white focus:bg-red-700 dark:focus:bg-white active:bg-red-900 dark:active:bg-red-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-red-800 transition ease-in-out duration-150" type="button">
                                                             {{ __('Hapus') }}
                                                        </button>
@@ -100,7 +114,7 @@
                                                                  </div>
                                                             </div>
                                                        </div>
-                                                  </td>
+                                                  </td> --}}
                                              </tr>
                                         @endforeach
                                    @endisset

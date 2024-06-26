@@ -25,6 +25,9 @@
                     <x-nav-link :href="route('admin.food.index')" :active="request()->routeIs('admin.food.*')">
                         {{ __('Makanan') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.chat.index')" :active="request()->routeIs('admin.food.*')">
+                        {{ __('Konsultasi') }}
+                    </x-nav-link>
 
                     {{-- <!-- Boys -->
                     <x-nav-link :href="route('admin.boys.index')" :active="request()->routeIs('admin.boys.*')">

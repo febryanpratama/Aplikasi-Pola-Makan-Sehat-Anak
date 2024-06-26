@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ChatController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -115,6 +116,13 @@ Route::middleware(['auth'])->group(function () {
             Route::patch('/{food}', 'update')->name('.update');
             Route::delete('/{food}', 'destroy')->name('.destroy');
         });
+        // \
+        // Chat
+
+        Route::prefix('/chat')->name('.chat')->controller(ChatController::class)->group(function(){
+            Route::get('/', 'index')->name('.index');
+            Route::post('/', 'store')->name('.store');
+        });
     });
     // End Users Handling
 
@@ -155,6 +163,15 @@ Route::middleware(['auth'])->group(function () {
 
             // Customized
             Route::post('/', 'search')->name('.search');
+        });
+
+        // Konsultasi
+
+        Route::prefix('/chat')->name('.chat')->controller(\App\Http\Controllers\Admin\ChatController::class)->group(function(){
+            Route::get('/', 'index')->name('.index');
+            Route::post('/', 'store')->name('.store');
+
+            Route::get('/{chat}/show', 'show')->name('.show');
         });
 
         // Boys || Anak Laki-Laki
