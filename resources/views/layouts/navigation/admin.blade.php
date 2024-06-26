@@ -17,9 +17,9 @@
                     </x-nav-link>
 
                     <!-- Food Group -->
-                    <x-nav-link :href="route('admin.food_group.index')" :active="request()->routeIs('admin.food_group.*')">
+                    {{-- <x-nav-link :href="route('admin.food_group.index')" :active="request()->routeIs('admin.food_group.*')">
                         {{ __('Kelompok Makanan') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                     <!-- Food -->
                     <x-nav-link :href="route('admin.food.index')" :active="request()->routeIs('admin.food.*')">
