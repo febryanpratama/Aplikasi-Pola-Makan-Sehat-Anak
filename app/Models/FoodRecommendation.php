@@ -13,7 +13,8 @@ class FoodRecommendation extends Model
         'child_id',
         'food_id',
         'time',
-        'notes'
+        'notes',
+        'keterangan'
     ];
 
     public function child()

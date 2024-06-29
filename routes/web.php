@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ChildrenController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\ChatController;
 use Illuminate\Support\Facades\Http;
@@ -150,6 +151,14 @@ Route::middleware(['auth'])->group(function () {
             // Customized
             Route::post('/', 'search')->name('.search');
             Route::post('/store/image', 'image')->name('.image');
+        });
+
+        // Children
+
+        Route::prefix('/children')->name('.children')->controller(ChildrenController::class)->group(function(){
+            Route::get('/', 'index')->name('.index');
+            Route::get('/show/{children}', 'show')->name('.show');
+            Route::post('food/{food_recomm_id}', 'storeKeterangan');
         });
 
         // Food
