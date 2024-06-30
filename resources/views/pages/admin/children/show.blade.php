@@ -31,9 +31,9 @@
                                        <th scope="col" class="px-6 py-3">
                                             Detail
                                        </th>
-                                       <th scope="col" class="px-6 py-3">
+                                       {{-- <th scope="col" class="px-6 py-3">
                                             Action
-                                       </th>
+                                       </th> --}}
                                        <th scope="col" class="px-6 py-3">
                                        </th>
                                   </tr>
@@ -78,7 +78,7 @@
                                                            </div>
                                                       </div>
                                                  </td>
-                                                 <td class="px-6 py-4 flex">
+                                                 {{-- <td class="px-6 py-4 flex">
 
                                                     @if ($item->keterangan)
                                                         <button class="inline-flex items-center px-4 py-2 bg-red-800 dark:bg-red-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-red-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-white focus:bg-red-700 dark:focus:bg-white active:bg-red-900 dark:active:bg-red-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-red-800 transition ease-in-out duration-150" type="button">
@@ -103,9 +103,7 @@
                                                                         @csrf
                                                                         <input type="hidden" name="food_recomm_id" value="{{ $item->id }}">
                                                                         <div class="p-4 md:p-5">
-                                                                                {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                                                                </svg> --}}
+                                                                                
                                                                                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah kamu akan melakukan pencoretan kepada bahan makanan {{ $item->food->name }}?</h3>
                                                                                 <div class="py-2">
                                                                                     <x-input-label for="name" :value="__('Keterangan')" />
@@ -113,11 +111,6 @@
                                                                                     <x-input-error :messages="$errors->get('keterangan')" class="mt-2" />
                                                                             </div>
                                                 
-                                                                            {{-- <div class="py-2">
-                                                                                    <x-input-label for="image" :value="__('Gambar Makanan')" />
-                                                                                    <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required autofocus autocomplete="image" placeholder="Tulis Nama Kelompok Makanan" />
-                                                                                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
-                                                                            </div> --}}
                                                                             <hr>
                                                                             <div class="flex justify-end mt-4">
                                                                                 <button data-modal-hide="popup-modal-{{ $index }}" type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
@@ -131,9 +124,7 @@
                                                             </div>
                                                         </div>
                                                     @endif
-
-
-                                                 </td>
+                                                 </td> --}}
                                                  {{-- <td class="px-6 py-4 flex gap-4 justify-end">
                                                       <button data-modal-target="popup-modal-{{ $index }}" data-modal-toggle="popup-modal-{{ $index }}" class="inline-flex items-center px-4 py-2 bg-blue-800 dark:bg-red-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-red-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-white focus:bg-red-700 dark:focus:bg-white active:bg-red-900 dark:active:bg-red-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-red-800 transition ease-in-out duration-150" type="button">
                                                            {{ __('Hapus') }}
