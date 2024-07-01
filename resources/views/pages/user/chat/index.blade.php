@@ -33,7 +33,7 @@
                                     <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff" alt="">
                                     <p class="text-lg ml-4">
                                         <span class="font-bold">Admin</span> <br>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero at, molestias tenetur iusto recusandae laborum?
+                                        {{ $item->chat }}
                                     </p>
                                     {{-- <p class="text-left	">Lorem ipsum dolor sit, amet consectetur adipisicing elit. A molestias odit fuga non in natus.</p> --}}
                                 </div>
