@@ -235,7 +235,7 @@ class ChildrenController extends Controller
             // notes
             'notes' => 'required|string',
             // avatar
-            'avatar' => 'required|image',
+            // 'avatar' => 'required|image',
         ], [
             // _token
             '_token.required' => 'Token Dibutuhkan',
@@ -266,8 +266,8 @@ class ChildrenController extends Controller
             'notes.required' => 'Catatan Dibutuhkan',
             'notes.string' => 'Catatan Harus String',
             // avatar
-            'avatar.required' => 'Avatar Dibutuhkan',
-            'avatar.image' => 'Avatar Harus Gambar',
+            // 'avatar.required' => 'Avatar Dibutuhkan',
+            // 'avatar.image' => 'Avatar Harus Gambar',
         ]);
 
         // Check Validator Fails
@@ -279,21 +279,21 @@ class ChildrenController extends Controller
         }
 
         // Check Image
-        if ($request->hasFile('avatar')) {
-            // Upload Image
-            try {
-                //code...
-                // Rename Image File
-                $image_name = \Str::random(10) . '.' . $request->file('avatar')->getClientOriginalExtension();
+        // if ($request->hasFile('avatar')) {
+        //     // Upload Image
+        //     try {
+        //         //code...
+        //         // Rename Image File
+        //         $image_name = \Str::random(10) . '.' . $request->file('avatar')->getClientOriginalExtension();
 
-                // Store Thumbnail
-                Storage::putFileAs('public/avatar/', $request->file('avatar'), $image_name);
-            } catch (\Throwable $th) {
-                //throw $th;
-                Alert::error('Error', 'Gagal Mengolah Gambar!');
-                return redirect()->route('admin.food.create')->withErrors($validator)->withInput();
-            }
-        }
+        //         // Store Thumbnail
+        //         Storage::putFileAs('public/avatar/', $request->file('avatar'), $image_name);
+        //     } catch (\Throwable $th) {
+        //         //throw $th;
+        //         Alert::error('Error', 'Gagal Mengolah Gambar!');
+        //         return redirect()->route('admin.food.create')->withErrors($validator)->withInput();
+        //     }
+        // }
 
         // Select Children from Request data to Database
         $children = \App\Models\Children::where('slug', $slug)->firstOrFail();

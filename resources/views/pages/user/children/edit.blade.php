@@ -96,11 +96,11 @@
                               </div>
 
                               {{-- avatar --}}
-                              <div class="py-2">
+                              {{-- <div class="py-2">
                                    <x-input-label for="avatar" :value="__('Foto Anak')" />
                                    <x-text-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" :value="old('avatar')" required autofocus autocomplete="avatar" placeholder="Tulis Nama Kelompok Makanan" />
                                    <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
-                              </div>
+                              </div> --}}
 
                               {{-- birthdate --}}
                               <div class="py-2">
