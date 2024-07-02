@@ -71,7 +71,7 @@ class ChildrenController extends Controller
             // notes
             'notes' => 'required|string',
             // avatar
-            'avatar' => 'required|image',
+            // 'avatar' => 'required|image',
         ], [
             // _token
             '_token.required' => 'Token Dibutuhkan',
@@ -102,8 +102,8 @@ class ChildrenController extends Controller
             'notes.required' => 'Catatan Dibutuhkan',
             'notes.string' => 'Catatan Harus String',
             // avatar
-            'avatar.required' => 'Avatar Dibutuhkan',
-            'avatar.image' => 'Avatar Harus Gambar',
+            // 'avatar.required' => 'Avatar Dibutuhkan',
+            // 'avatar.image' => 'Avatar Harus Gambar',
         ]);
 
         // Check Validator Fails
@@ -115,18 +115,18 @@ class ChildrenController extends Controller
         }
 
         // Upload Image
-        try {
-            //code...
-            // Rename Image File
-            $image_name = \Str::random(10) . '.' . $request->file('avatar')->getClientOriginalExtension();
+        // try {
+        //     //code...
+        //     // Rename Image File
+        //     $image_name = \Str::random(10) . '.' . $request->file('avatar')->getClientOriginalExtension();
 
-            // Store Thumbnail
-            Storage::putFileAs('public/avatar/', $request->file('avatar'), $image_name);
-        } catch (\Throwable $th) {
-            throw $th;
-            Alert::error('Error', 'Gagal Mengolah Gambar!');
-            return redirect()->route('user.children.create')->withErrors($validator)->withInput();
-        }
+        //     // Store Thumbnail
+        //     Storage::putFileAs('public/avatar/', $request->file('avatar'), $image_name);
+        // } catch (\Throwable $th) {
+        //     throw $th;
+        //     Alert::error('Error', 'Gagal Mengolah Gambar!');
+        //     return redirect()->route('user.children.create')->withErrors($validator)->withInput();
+        // }
 
         // Debugging
         // dd($request->all());
@@ -142,7 +142,7 @@ class ChildrenController extends Controller
             // slug
             $children->slug = \Str::slug($request->name);
             // avatar
-            $children->avatar = $image_name ?? $children->avatar;
+            $children->avatar = $image_name ?? "test";
             // gander
             $children->gander = $request->gander;
             // birthdate
