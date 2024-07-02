@@ -272,6 +272,14 @@ class FoodRecommendationController extends Controller
         $children = \App\Models\Children::where('slug', $childdren)->first();
         // dd($children);
 
+        $foodRecommendations = \App\Models\FoodRecommendation::where('child_id', $children->id)->paginate(10);
+
+
+        if ($foodRecommendations->count() > 0) {
+            // return redirect()->route('user.food-recommendation.index', $children->slug);
+            return redirect('/user/children/'.$children->slug.'/food-recommendation');
+        }
+
         // Food Group 
         $foodGroups = \App\Models\FoodGroup::all();
 
